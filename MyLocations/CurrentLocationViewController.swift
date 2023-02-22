@@ -10,12 +10,12 @@ import CoreLocation
 
 
 class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate {
-    @IBOutlet weak var messageLabel: UILabel!
-    @IBOutlet weak var latitudeLabel: UILabel!
-    @IBOutlet weak var longitudeLabel: UILabel!
-    @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var tagButton: UIButton!
-    @IBOutlet weak var getButton: UIButton!
+    @IBOutlet var messageLabel: UILabel!
+    @IBOutlet var latitudeLabel: UILabel!
+    @IBOutlet var longitudeLabel: UILabel!
+    @IBOutlet var addressLabel: UILabel!
+    @IBOutlet var tagButton: UIButton!
+    @IBOutlet var getButton: UIButton!
     
     let locationManager = CLLocationManager()
     var location: CLLocation?
@@ -127,6 +127,7 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
       }
       configureGetButton()
     }
+
     
     func configureGetButton() {
       if updatingLocation {
@@ -177,14 +178,14 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
       }
       return line1 + "\n" + line2
     }
-    
+
     @objc func didTimeOut() {
-        if location == nil {
-          stopLocationManager()
-          lastLocationError = NSError(domain: "MyLocationsErrorDomain", code: 1, userInfo: nil)
-          updateLabels()
-        }
+      if location == nil {
+        stopLocationManager()
+        lastLocationError = NSError(domain: "MyLocationsErrorDomain", code: 1, userInfo: nil)
+        updateLabels()
       }
+    }
 
     // MARK: - CLLocationManagerDelegate
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -241,5 +242,4 @@ class CurrentLocationViewController: UIViewController, CLLocationManagerDelegate
         }
       }
     }
-}
-
+  }
