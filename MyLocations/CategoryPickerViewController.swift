@@ -23,8 +23,10 @@ class CategoryPickerViewController: UITableViewController {
     ]
     
     var selectedIndexPath = IndexPath()
+    
     override func viewDidLoad() {
       super.viewDidLoad()
+        
       for i in 0..<categories.count {
         if categories[i] == selectedCategoryName {
           selectedIndexPath = IndexPath(row: i, section: 0)
@@ -59,8 +61,10 @@ class CategoryPickerViewController: UITableViewController {
       let cell = tableView.dequeueReusableCell(
         withIdentifier: "Cell",
         for: indexPath)
+        
       let categoryName = categories[indexPath.row]
       cell.textLabel!.text = categoryName
+        
       if categoryName == selectedCategoryName {
         cell.accessoryType = .checkmark
     } else {
@@ -77,8 +81,7 @@ class CategoryPickerViewController: UITableViewController {
         if let newCell = tableView.cellForRow(at: indexPath) {
           newCell.accessoryType = .checkmark
         }
-        if let oldCell = tableView.cellForRow(
-          at: selectedIndexPath) {
+        if let oldCell = tableView.cellForRow(at: selectedIndexPath) {
             oldCell.accessoryType = .none
           }
           selectedIndexPath = indexPath
